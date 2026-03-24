@@ -1,6 +1,10 @@
-def calculate_pyramid(blocks):
+def calculate_pyramid_height(blocks):
     height = 0
-    while blocks >= height + 1:
+    required_blocks = 1
+    
+    while blocks >= required_blocks:
+        blocks -= required_blocks
         height += 1
-        blocks -= height
+        required_blocks += 1
+    
     return height
