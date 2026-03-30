@@ -16,11 +16,13 @@ def custom_equation(x: int = 0 , y: int = 0 , /, a: int = 1, b: int=1 , * , c: i
   return (x**a + y**b)/c
 
 
-calls = 0
-def fn_w_counter()->(int, dict[str, int]):
-    global calls
-    calls += 1
-    return calls, {__name__: calls }
+def fn_w_counter() -> (int, dict[str, int]):
+    if not hasattr(fn_w_counter, "calls"):
+        fn_w_counter.calls = 0
+    
+    fn_w_counter.calls += 1
+    
+    return fn_w_counter.calls, {__name__: fn_w_counter.calls}
 
   
 
